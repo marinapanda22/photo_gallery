@@ -1,7 +1,13 @@
 Rails.application.routes.draw do
   
-  resources :notices
+  # get 'profiles/show'
+
+  # get 'profiles/edit'
+  get 'profiles_show/:id' => 'profiles#show', as: 'profiles_show'
+  get 'profiles_edit/:id' => 'profiles#edit', as: 'profiles_edit'
+  
   ActiveAdmin.routes(self)
+  resources :notices
   resources :galleries
   devise_for :users
   root "galleries#index"

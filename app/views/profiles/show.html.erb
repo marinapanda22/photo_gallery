@@ -1,0 +1,24 @@
+</br>
+<em><center><h1>Profile of <%= user.name %></h1></center></em>
+<div class="posts-wrapper">
+  <div class="row profile-header">
+    <div class="col-md-6">
+      <div class="user-name-and-follow">
+        <span>
+          <% if @user == current_user %>
+            <%= link_to 'Edit Profile', profiles_edit_path(@user[:id]),  class: 'btn edit-button' %>
+     
+    
+          <% end %>            
+      
+        </span>
+      </div>
+      
+    </div>
+  </div>
+</div>
+
+<% @users.galleries.each do |gallery| %>
+  <%= gallery.title %>
+  <div class="img"> <%= link_to image_tag(gallery.image.url(:medium), size: '150'), gallery_path(gallery)  %></div>
+<% end %>

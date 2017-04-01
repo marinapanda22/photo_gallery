@@ -20,6 +20,7 @@
             <p class="navbar-text">
               Hello, <%= link_to current_user.name, edit_user_registration_path(current_user), class: 'navbar-link' %> <span class="glyphicon glyphicon-heart delete-like"> </span>
               <%= link_to 'Sign out', destroy_user_session_path, method: :delete,  class: 'navbar-link'  %>
+              
             </p>
         <% else %>
             <%= link_to 'Sign up', new_user_registration_path, class: 'btn btn-default navbar-btn' %>
