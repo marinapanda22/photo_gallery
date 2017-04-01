@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   get 'profiles_edit/:id' => 'profiles#edit', as: 'profiles_edit'
   
   ActiveAdmin.routes(self)
-  
+  resources :profiles
   resources :galleries do
   	resources :notices
   end

@@ -31,6 +31,6 @@ end
 end
 10.times do
   Gallery.create(title: Faker::Pokemon.name, image:File.new(dir + "5.jpg"),
-                user_id: 8
+                user_id: 2
   )
 end

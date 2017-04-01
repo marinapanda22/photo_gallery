@@ -1,5 +1,6 @@
 class NoticesController < InheritedResources::Base
   before_action :set_gallery
+  before_action :authenticate_user!, only: :create
   def new
     @notice = Notice.new
   end

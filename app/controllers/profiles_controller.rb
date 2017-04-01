@@ -1,7 +1,7 @@
 class ProfilesController < ApplicationController
   def show
-  	@users = User.find(params[:id])
-  	
+  	@user = User.find(params[:id])
+  	@galleries = User.find(params[:id]).galleries
   end
 
   def edit
