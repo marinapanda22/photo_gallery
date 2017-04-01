@@ -5,7 +5,7 @@
   <div class="">
     <div class="row">
       <div class="col-sm-12 products-pagination">
-            <%= @galleries %>
+            <%= will_paginate @galleries %>
       </div>
     </div>
 
@@ -19,7 +19,7 @@
               <div class="panel-body" align="center">
                 <div class="img"> <%= link_to image_tag(gallery.image.url(:medium), size: '150'), gallery_path(gallery)  %></div>
                 <h3><%= gallery.title %></h3>
-                <h4> By <%= gallery.user %></h4>
+                <h4> By <%= gallery.user.name %></h4>
               </div>
             </div>
           </div>
