@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @notice.user_id %>
+</p>
+
+<p>
+  <strong>Gallery:</strong>
+  <%= @notice.gallery_id %>
+</p>
+
+<p>
+  <strong>Body:</strong>
+  <%= @notice.body %>
+</p>
+
+<p>
+  <strong>Mark:</strong>
+  <%= @notice.mark %>
+</p>
+
+<%= link_to 'Edit', edit_notice_path(@notice) %> |
+<%= link_to 'Back', notices_path %>

@@ -1,0 +1,14 @@
+<%= simple_form_for(@notice) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :user_id %>
+    <%= f.input :gallery_id %>
+    <%= f.input :body %>
+    <%= f.input :mark %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

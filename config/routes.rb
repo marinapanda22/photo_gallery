@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  
+  resources :notices
   ActiveAdmin.routes(self)
   resources :galleries
   devise_for :users

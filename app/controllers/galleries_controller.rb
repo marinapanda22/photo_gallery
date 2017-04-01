@@ -4,7 +4,7 @@ class GalleriesController < ApplicationController
   # GET /galleries
   # GET /galleries.json
   def index
-    @galleries = Gallery.paginate(:page => params[:page], :per_page => 5)
+    @galleries = Gallery.order(created_at: :desc).paginate(:page => params[:page], :per_page => 5)
   end
 
   # GET /galleries/1
