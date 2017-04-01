@@ -1,28 +1,37 @@
-<p id="notice"><%= notice %></p>
-</br>
-<h1>Galleries</h1>
+</br><h1>Galleries</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>User</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<div class="row">
 
-  <tbody>
-    <% @galleries.each do |gallery| %>
-      <tr>
-        <td><%= gallery.title %></td>
-        <td><%= gallery.user_id %></td>
-        <td><%= link_to 'Show', gallery %></td>
-        <td><%= link_to 'Edit', edit_gallery_path(gallery) %></td>
-        <td><%= link_to 'Destroy', gallery, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+  <div class="">
+    <div class="row">
+      <div class="col-sm-12 products-pagination">
+            <%= @galleries %>
+      </div>
+    </div>
+
+
+
+    <div class="row">
+      <% @galleries.each do |gallery| %>
+
+          <div class="col-sm-4 product-item">
+            <div class="panel panel-default">
+              <div class="panel-body" align="center">
+                <div class="img"> <%= link_to image_tag(gallery.image.url(:medium), size: '150'), gallery_path(gallery)  %></div>
+                <h3><%= gallery.title %></h3>
+                <h4> By <%= gallery.user %></h4>
+              </div>
+            </div>
+          </div>
+
+      <% end %>
+    </div>
+
+
+  </div>
+
+</div>
+
 
 <br>
 
