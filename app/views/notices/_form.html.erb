@@ -1,14 +1,17 @@
-<%= simple_form_for(@notice) do |f| %>
-  <%= f.error_notification %>
 
-  <div class="form-inputs">
-    <%= f.input :user_id %>
-    <%= f.input :gallery_id %>
-    <%= f.input :body %>
-    <%= f.input :mark %>
+<%= form_for @gallery.comments.build, remote: true do |f| %>
+  <div>
+    <%= f.hidden_field :gallery_id, value: @gallery.id %>  
+  </div>
+  <div>
+    <%= f.hidden_field :user_id, value: @user.id %>    
+  </div>
+  <div>
+    Mark: <%= f.select(:mark, options_for_select(1..5)) %>
+  </div>
+  <div>
+    Text: <%= f.text_area :body %>
   </div>
 
-  <div class="form-actions">
-    <%= f.button :submit %>
-  </div>
+  <%= f.submit %>
 <% end %>

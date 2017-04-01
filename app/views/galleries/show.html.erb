@@ -1,14 +1,49 @@
 <p id="notice"><%= notice %></p>
-
+</br>
+</br>
 <p>
   <strong>Title:</strong>
-  <%= @gallery.title %>
+  <h3><%= @gallery.title %></h3>
 </p>
-
+<div class="img"> <%= image_tag(@gallery.image.url(:medium), size: '300')  %></div>
 <p>
   <strong>User:</strong>
-  <%= @gallery.user_id %>
+  <%= @gallery.user.name %>
 </p>
 
 <%= link_to 'Edit', edit_gallery_path(@gallery) %> |
 <%= link_to 'Back', galleries_path %>
+<% if @gallery.notices %>
+        <% sum = 0 %>
+        <% @gallery.notices.each do |notice| %>
+          <div class="notice">
+            Author: <div class="user-name">
+              <%= notice.user.name %>
+            </div></br>
+            Comment: <div class="notice-content">
+              <%= notice.body %>
+            </div>
+            Mark: <div class="notice-content">
+              <%= notice.mark %>
+              <% sum = sum + notice.mark.to_i %>
+            </div>
+           
+            <% if notice.user == current_user %>
+              <%= link_to gallery_notice_path(@gallery, notice), method: :delete do %>
+                <span class="glyphicon glyphicon-remove delete-notice"> </span>
+              <% end %>
+            <% end %>
+          </div>
+        <% end %>
+      <% end %>
+Average mark: <%= sum / @gallery.notices.count.to_f %> </br> 
+<h3>Create a notice</h3>
+    <div class="notice-form row">
+      <div class="notice-form col-sm-11">
+        <%= form_for [@gallery, @gallery.notices.new] do |f| %>
+          <%= f.text_field :body, placeholder: 'Add a notice...' %>
+          <%= f.hidden_field :gallery_id, value: @gallery.id %>
+          <%= f.select(:mark, options_for_select(1..5)) %>
+        <% end %>
+      </div>
+    </div>
